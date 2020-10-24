@@ -85,7 +85,7 @@ public class Rational
     public double calculateDecimalValue() { 
         return (((double)(this.numerator)) / this.denominator); // YOUR CODE HERE
     }
-
+    
     // Returns the Rational we get from raising  the rational number to an integer power
     public Rational pow(int exponent) {
         Rational r = new Rational((int) Math.pow(this.numerator,exponent),(int) Math.pow(this.denominator,exponent));
