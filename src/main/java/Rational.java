@@ -56,6 +56,15 @@ public class Rational
         return x;
     }
 
+    public Rational simplify()
+    {
+        int factor = greatestCommonFactor(this.numerator, this.denominator);
+        int newNumerator = this.numerator/factor;
+        int newDenominator = this.denominator/factor;
+        Rational x = new Rational(newNumerator, newDenominator);
+        return x;
+    }
+
     // *****
     // Here are all of our NON-STATIC methods:
     // *****
@@ -88,27 +97,26 @@ public class Rational
         return (this.numerator == x || this.denominator == x);
     }
 
-
-
-    
-
     // Methods you'll write for homework:
     // Returns whether or not the Rational is a negative number
     public boolean isNegative() { 
-        return false; // YOUR CODE HERE
+        return (this.numerator * this.denominator < 0);
     }
 
     // Calculates the reciprocal of a Rational number.
     // The reciprocal of 3/4 is 4/3, the reciprocal of 1/2 is 2/1
     public Rational reciprocal() {
-        return null; // YOUR CODE HERE
+        return new Rational(this.denominator, this.numerator);
     }
 
     // Checks whether the current Rational is the exactly the same as other
     public boolean equals(Rational other) {
-        return false; // YOUR CODE HERE
+        
+        Rational r1 = this.simplify();
+        Rational r2 = other.simplify();
+        
+        return (r1.numerator == r2.numerator && r1.denominator == r2.denominator);
     }
-
 
     // This returns a string representation of a Rational (e.g. "1/2")
     @Override
